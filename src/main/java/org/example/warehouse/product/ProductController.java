@@ -1,11 +1,14 @@
 package org.example.warehouse.product;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 
-@RestController
+@RestController(value = "/product")
 public class ProductController {
     private final ProductFacade productFacade;
 
@@ -13,12 +16,13 @@ public class ProductController {
         this.productFacade = productFacade;
     }
 
-    @PostMapping(value = "/product")
-    public void saveItem(@RequestBody ProductDto productDto) {
+    @PostMapping(value = "/")
+    public void createProduct(@RequestBody ProductDto productDto) {
         productFacade.save(productDto);
     }
-    @GetMapping(value = "/products")
-    public List<ProductDto> getProducts(){
+
+    @GetMapping(value = "/")
+    public List<ProductDto> getProducts() {
         return productFacade.getAll();
     }
 }
