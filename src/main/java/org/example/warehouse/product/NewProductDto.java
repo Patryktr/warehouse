@@ -1,6 +1,6 @@
 package org.example.warehouse.product;
 
-import org.example.warehouse.abstractPatterns.ProductType;
+import org.example.warehouse.abstractPattern.ProductType;
 
 public class NewProductDto {
     ProductType productType;

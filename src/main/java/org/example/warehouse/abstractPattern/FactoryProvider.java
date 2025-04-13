@@ -1,8 +1,8 @@
-package org.example.warehouse.abstractPatterns;
+package org.example.warehouse.abstractPattern;
 
-import org.example.warehouse.abstractPatterns.factory.IAbstractProductFactory;
-import org.example.warehouse.abstractPatterns.factory.IndoorFactory;
-import org.example.warehouse.abstractPatterns.factory.OutdoorFactory;
+import org.example.warehouse.abstractPattern.factory.IAbstractProductFactory;
+import org.example.warehouse.abstractPattern.factory.IndoorFactory;
+import org.example.warehouse.abstractPattern.factory.OutdoorFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

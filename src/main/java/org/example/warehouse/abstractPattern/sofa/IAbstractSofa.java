@@ -1,4 +1,4 @@
-package org.example.warehouse.abstractPatterns.sofa;
+package org.example.warehouse.abstractPattern.sofa;
 
 import org.example.warehouse.product.Product;
 

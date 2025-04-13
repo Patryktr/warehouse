@@ -1,4 +1,4 @@
-package org.example.warehouse.abstractPatterns;
+package org.example.warehouse.abstractPattern;
 
 public enum ProductType {
     OUTDOOR,

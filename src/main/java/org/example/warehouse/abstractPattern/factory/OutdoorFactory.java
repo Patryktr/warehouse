@@ -1,6 +1,6 @@
-package org.example.warehouse.abstractPatterns.factory;
+package org.example.warehouse.abstractPattern.factory;
 
-import org.example.warehouse.abstractPatterns.sofa.OutdoorSofa;
+import org.example.warehouse.abstractPattern.sofa.OutdoorSofa;
 import org.example.warehouse.product.NewProductDto;
 import org.example.warehouse.product.Product;
 
