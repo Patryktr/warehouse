@@ -1,16 +1,19 @@
 package org.example.warehouse.product;
 
+import lombok.Builder;
 import lombok.Getter;
-
+@Builder
 @Getter
 public class ProductDto {
-    private final String name;
     private final Long productId;
+    private final String name;
+    private final int weight;
+    private final int height;
+    private final String description;
+    private final String category;
 
-    public ProductDto(String name, Long productId) {
-        this.name = name;
-        this.productId = productId;
+    private final String subCategory;
 
-    }
+
 
 }
