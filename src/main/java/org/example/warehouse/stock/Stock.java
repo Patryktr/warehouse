@@ -23,12 +23,14 @@ public class Stock {
         this.quantity = quantity;
         this.reservedQuantity = reservedQuantity;
     }
+
     public Stock(Long productId, Integer quantity) {
         this.productId = productId;
         this.quantity = quantity;
         this.reservedQuantity = 0;
     }
-    public void applyChanges(CreateStockCommand createOrUpdateStockCommand){
+
+    public void applyChanges(CreateStockCommand createOrUpdateStockCommand) {
         this.quantity = createOrUpdateStockCommand.quantity();
     }
 
@@ -43,6 +45,7 @@ public class Stock {
         }
         this.reservedQuantity = reservedQuantity;
     }
+
     public StockDto toDto() {
         return new StockDto(this.productId, this.quantity, this.reservedQuantity);
     }

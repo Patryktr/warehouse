@@ -5,8 +5,8 @@ import org.example.warehouse.product.productDto.NewProductDto;
 import org.example.warehouse.product.productDto.ProductMapper;
 import org.example.warehouse.product.productDto.ProductViewDto;
 import org.example.warehouse.product.productDto.UpdateProductDto;
-import org.example.warehouse.stock.stockCommand.CreateStockCommand;
 import org.example.warehouse.stock.StockFacade;
+import org.example.warehouse.stock.stockCommand.CreateStockCommand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

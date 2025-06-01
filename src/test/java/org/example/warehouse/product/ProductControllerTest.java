@@ -12,6 +12,12 @@ import org.mockito.Mockito;
 import java.util.List;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
+
+
 class ProductControllerTest {
 
     private ProductController productController;
@@ -49,11 +55,11 @@ class ProductControllerTest {
                 "desc",
                 "catagory",
                 "sub"));
-        Mockito.when(productFacade.getAll()).thenReturn(expected);
+        when(productFacade.getAll()).thenReturn(expected);
 
         List<ProductDto> result = productController.getProducts();
 
-        Assertions.assertEquals(expected, result);
+        assertEquals(expected, result);
         Mockito.verify(productFacade).getAll();
     }
     @Test
@@ -67,11 +73,11 @@ class ProductControllerTest {
                 .category("Electronics")
                 .subCategory("Phones")
                 .build();
-        Mockito.when(productFacade.getById(1L)).thenReturn(expected);
+        when(productFacade.getById(1L)).thenReturn(expected);
 
         ProductViewDto result = productController.getProduct(1L);
 
-        Assertions.assertEquals(expected, result);
+        assertEquals(expected, result);
         Mockito.verify(productFacade).getById(1L);
     }
     @Test
@@ -92,31 +98,12 @@ class ProductControllerTest {
         Mockito.verify(productFacade).update(1L, dto);
     }
 
+
     @Test
     void shouldDeleteProduct() {
         productController.deleteProduct(1L);
 
         Mockito.verify(productFacade).deleteById(1L);
     }
-    @Test
-    void createProduct() {
-    }
 
-    @Test
-    void getProducts() {
-        //given
-
-    }
-
-    @Test
-    void getProduct() {
-    }
-
-    @Test
-    void updateProduct() {
-    }
-
-    @Test
-    void deleteProduct() {
-    }
 }

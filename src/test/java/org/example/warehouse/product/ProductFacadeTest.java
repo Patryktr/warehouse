@@ -149,6 +149,74 @@ class ProductFacadeTest {
         // wynik
         assertEquals(expectedView, result);
     }
+    @Test
+    void shouldReturnProductViewDto_whenProductExists() {
+        // given
+        Long productId = 1L;
+        Product product = mock(Product.class);
+        ProductViewDto expectedDto = ProductViewDto.builder()
+                .name("Sofa")
+                .weight(10)
+                .height(100)
+                .description("Nice sofa")
+                .productType(ProductType.INDOOR)
+                .category("Living Room")
+                .subCategory("Sofas")
+                .build();
+
+        when(productRepository.findById(productId)).thenReturn(Optional.of(product));
+        when(productMapper.mapToViewDto(product)).thenReturn(expectedDto);
+
+        // when
+        ProductViewDto result = productFacade.getById(productId);
+
+        // then
+        assertNotNull(result);
+        assertEquals("Sofa", result.getName());
+        verify(productRepository).findById(productId);
+        verify(productMapper).mapToViewDto(product);
+    }
+
+    @Test
+    void shouldThrowException_whenProductNotFound_getById() {
+        // given
+        Long productId = 2L;
+        when(productRepository.findById(productId)).thenReturn(Optional.empty());
+
+        // then
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> productFacade.getById(productId));
+        assertEquals("Produkt nie znaleziony", exception.getMessage());
+        verify(productRepository).findById(productId);
+        verifyNoMoreInteractions(productMapper);
+    }
+
+    @Test
+    void shouldDeleteProduct_whenProductExists() {
+        // given
+        Long productId = 3L;
+        Product product = mock(Product.class);
+        when(productRepository.findById(productId)).thenReturn(Optional.of(product));
+
+        // when
+        productFacade.deleteById(productId);
+
+        // then
+        verify(productRepository).findById(productId);
+        verify(productRepository).delete(product);
+    }
+
+    @Test
+    void shouldThrowException_whenProductNotFound_deleteById() {
+        // given
+        Long productId = 4L;
+        when(productRepository.findById(productId)).thenReturn(Optional.empty());
+
+        // then
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> productFacade.deleteById(productId));
+        assertEquals("Produkt nie znaleziony", exception.getMessage());
+        verify(productRepository).findById(productId);
+        verify(productRepository, never()).delete(any());
+    }
 
 
 

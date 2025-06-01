@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/product")
 
-@RestController(value = "/product")
 public class ProductController {
     private final ProductFacade productFacade;
 
@@ -41,6 +42,7 @@ public class ProductController {
         productFacade.update(id, dto);
 
     }
+
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a product", description = "Deleting a product by id from DB")
     public void deleteProduct(@PathVariable Long id) {

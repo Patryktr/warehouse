@@ -11,14 +11,14 @@ import java.util.Map;
 @Service
 class FactoryProvider {
 
-	private final Map<ProductType, IAbstractProductFactory> factoryProviderMap = new HashMap<>();
+    private final Map<ProductType, IAbstractProductFactory> factoryProviderMap = new HashMap<>();
 
-	public FactoryProvider(List<IAbstractProductFactory> productFactories) {
-		productFactories.forEach(productFactory -> factoryProviderMap.put(productFactory.getType(), productFactory));
-	}
+    public FactoryProvider(List<IAbstractProductFactory> productFactories) {
+        productFactories.forEach(productFactory -> factoryProviderMap.put(productFactory.getType(), productFactory));
+    }
 
-	IAbstractProductFactory getByType(ProductType productType) {
-		return this.factoryProviderMap.get(productType);
-	}
+    IAbstractProductFactory getByType(ProductType productType) {
+        return this.factoryProviderMap.get(productType);
+    }
 
 }

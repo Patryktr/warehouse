@@ -23,12 +23,14 @@ public class StockFacade {
         }
         stockRepository.save(stock);
     }
+
     public StockDto getStockByProductId(Long productId) {
         Stock stock = stockRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Produkt nie znaleziony"));
         return stock.toDto();
     }
-    public List<StockDto> getAll(){
+
+    public List<StockDto> getAll() {
         return stockRepository.findAll().stream()
                 .map(Stock::toDto)
                 .collect(Collectors.toList());
@@ -58,16 +60,13 @@ public class StockFacade {
 
         stockRepository.save(stock);
     }
+
     public void deleteStock(Long productId) {
         if (!stockRepository.existsById(productId)) {
             throw new IllegalArgumentException("Product with id " + productId + " not found in stock.");
         }
         stockRepository.deleteById(productId);
     }
-
-
-
-
 
 
 }

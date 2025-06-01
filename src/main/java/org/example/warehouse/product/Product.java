@@ -11,7 +11,8 @@ import org.example.warehouse.product.abstractPattern.ProductType;
 @DiscriminatorColumn(name = "dtype")
 
 @Table(name = "product")
-public  class Product {
+public class Product {
+
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,9 +20,9 @@ public  class Product {
     private int weight;
     private int height;
     private String description;
-    ProductType productType;
     private String category;
     private String subCategory;
+    ProductType productType;
 
     public Product() {
     }
@@ -36,6 +37,7 @@ public  class Product {
         this.name = productDto.getName();
 
     }
+
     public ProductDto toDto() {
         return ProductDto.builder()
                 .productId(this.id)
@@ -61,6 +63,7 @@ public  class Product {
         }
         this.height = newHeight;
     }
+
     public void changeWeight(int newWeight) {
         if (newWeight < 0) {
             throw new IllegalArgumentException("Height cannot be negative");
@@ -85,9 +88,6 @@ public  class Product {
         }
         this.subCategory = newSubCategory;
     }
-
-
-
 
 
 }
